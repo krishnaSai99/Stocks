@@ -1,0 +1,17 @@
+body{
+    text-align: center;
+}
+label{
+    display: block;
+    padding-bottom: 1rem;
+}
+
+button{
+    padding: 0.3rem;
+    padding-bottom: 0.5rem;
+}
+
+#output-box{
+    padding-bottom: 1rem;
+    padding: auto;
+}
