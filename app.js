@@ -21,7 +21,7 @@ function profitandloss(initial,quantity,current){
     if (current > initial){
         var profit=((current-initial)*quantity).toFixed(2);
         var profitpercentage= ((profit/initial)*100).toFixed(2);
-        showoutput(`hey the loss is ${profit} and the profit percent is ${profitpercentage}%`);
+        showoutput(`Hey the Profit is ${profit} and the profit percent is ${profitpercentage}%`);
 
     }
     else if(current < initial){
