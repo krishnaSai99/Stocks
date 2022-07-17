@@ -15,3 +15,7 @@ button{
     padding-bottom: 1rem;
     padding: auto;
 }
+
+input{
+    width: auto;
+}
