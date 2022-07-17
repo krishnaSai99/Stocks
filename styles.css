@@ -1,18 +1,9 @@
 body{
     text-align: center;
 }
-
-label {
-    color: #B4886B;
-    font-weight: bold;
+label{
     display: block;
     padding-bottom: 1rem;
-    width: 130px;
-    float: left;
-  }
-  
-label:after { 
-    content: ": " 
 }
 
 
