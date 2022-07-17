@@ -1,41 +1,43 @@
-// step-1 - selecting all the elements 
-var initialprice=document.querySelector("#initial-price");
-var stocksquantity=document.querySelector("#quantity");
-var currentvalue=document.querySelector("#current-price");
+const initialPrice = document.querySelector('#initial-price');
+const numberOfStocks = document.querySelector('#number-of-stocks');
+const currentPrice = document.querySelector('#current-price');
+const submitButton = document.querySelector('#show-me-btn');
+const outputMessage = document.querySelector('#output-message');
 
-var clickbutton=document.querySelector("#click-button");
-var outputbox=document.querySelector("#output-box");
+function calculateProfitorLoss () {
+    let initial = Number(initialPrice.value);
+    let current = Number(currentPrice.value);
+    let qty = Number(numberOfStocks.value);
+    
+    if (currentPrice.value !== "" && initialPrice.value !== "" && numberOfStocks.value !== "" ){
 
-
-clickbutton.addEventListener('click',clickhandler);
-function clickhandler(){
-    var ip=Number(initialprice.value);
-    var qty=Number(stocksquantity.value);
-    var cv=Number(currentvalue.value);
-
-    profitandloss(ip,qty,cv);
-
+    if (initial > 0 && current >= 0 && qty > 0 && Number.isInteger(initial) && Number.isInteger(initial) && Number.isInteger(qty)) {
+        if (initial > current) {
+            let loss = (initial - current) * qty;
+            let lossPercentage = (((initial - current) * 100) / initial).toFixed(2);
+            outputMessage.style.color =  "#d00000";
+            outputMessage.innerText = `Your loss is ${loss} and loss percentage is ${lossPercentage}% 🤯`;
+        }
+        else if (current > initial) {
+            let profit = (current - initial) * qty;
+            let profitPercentage = (((current - initial) * 100) / initial).toFixed(2);
+            outputMessage.style.color = "#1DB954";
+            outputMessage.innerText = `Your profit is ${profit} and profit percentage is ${profitPercentage}% 😎`;
+        }
+        else {
+            outputMessage.style.color = "#fffcf2";
+            outputMessage.innerText = `Relax.......There is no profit and no loss 😴`;
+        }
+    }
+    else {
+        outputMessage.style.color = "#d00000";
+        outputMessage.innerText = "You have either entered a negative value or... Number of Stocks or Initial Price is equal to zero❌";
+    }
+    }
+    else {
+        outputMessage.style.color = "#d00000";
+        outputMessage.innerText = "You have not provided all the inputs! ❌"
+    }
 }
 
-function profitandloss(initial,quantity,current){
-    if (current > initial){
-        var profit=((current-initial)*quantity).toFixed(2);
-        var profitpercentage= ((profit/initial)*100).toFixed(2);
-        showoutput(`Hey the Profit is ${profit} and the profit percent is ${profitpercentage}%`);
-
-    }
-    else if(current < initial){
-        var loss=((initial-current)*quantity).toFixed(2);
-        var losspercentage= ((loss/initial)*100).toFixed(2);
-        //console.log("The loss is: ", loss);
-        //console.log("The loss percentage is :", losspercentage);
-        showoutput(`Hey the loss is ${loss} and the loss percent is ${losspercentage}%`);
-    }
-    else{
-        showoutput("No pain No Gain")
-    }
-}
-
-function showoutput(message){
-    outputbox.innerHTML = message;
-}
+submitButton.addEventListener('click', calculateProfitorLoss);
